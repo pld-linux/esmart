@@ -1,4 +1,5 @@
 Summary:	Evas "smart objects"
+Summary(pl):	"Inteligentne obiekty" Evas
 Name:		esmart
 Version:	0.9.0
 %define _snap	20050106
@@ -22,24 +23,36 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Esmart contains "smart" pre-built evas objects. It currently includes
 a thumbnail generator and a horizontal/vertical container.
 
+%description -l pl
+Esmart zawiera "inteligentne" wstêpnie zbudowane obiekty evas.
+Aktualnie zawiera generator miniaturek i kontener poziomy/pionowy.
+
 %package devel
-Summary:	Eves "smart objects" headers and development libraries
+Summary:	Evas "smart objects" header files
+Summary(pl):	Pliki nag³ówkowe "inteligentnych obiektów" Evas
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	edje-devel
 Requires:	epeg-devel
 Requires:	epsilon-devel
 
 %description devel
-Evas "smart objects" development headers and libraries.
+Evas "smart objects" development headers.
+
+%description devel -l pl
+Pliki nag³ówkowe "inteligentnych obiektów" Evas.
 
 %package static
-Summary:	Static libraries
+Summary:	Static Esmart libraries
+Summary(pl):	Statyczne biblioteki Esmart
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static libraries.
+Static Esmart libraries.
+
+%description static -l pl
+Statyczne biblioteki Esmart.
 
 %prep
 %setup -q -n %{name}
@@ -55,6 +68,7 @@ Static libraries.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -67,21 +81,22 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING* README
-%attr(755,root,root) %{_libdir}/libesmart_*.so.*
+%attr(755,root,root) %{_bindir}/esmart_file_dialog_test
+%attr(755,root,root) %{_bindir}/esmart_test
+%attr(755,root,root) %{_libdir}/libesmart_*.so.*.*.*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/layout
 %attr(755,root,root) %{_libdir}/%{name}/layout/*.so
-%attr(755,root,root) %{_bindir}/esmart_file_dialog_test
-%attr(755,root,root) %{_bindir}/esmart_test
 %{_datadir}/%{name}
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/esmart-config
 %attr(755,root,root) %{_libdir}/libesmart_*.so
 %{_libdir}/libesmart_*.la
 %{_libdir}/%{name}/layout/*.la
+%dir %{_includedir}/Esmart
 %{_includedir}/Esmart/Esmart_*
-%attr(755,root,root) %{_bindir}/esmart-config
 %{_pkgconfigdir}/esmart.pc
 
 %files static
