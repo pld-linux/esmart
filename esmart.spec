@@ -2,13 +2,13 @@ Summary:	Evas "smart objects"
 Summary(pl):	"Inteligentne obiekty" Evas
 Name:		esmart
 Version:	0.9.0
-%define _snap	20050106
+%define _snap	20050701
 Release:	0.%{_snap}.0.1
 License:	BSD
 Group:		X11/Libraries
 #Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-Source0:	ftp://ftp.sparky.homelinux.org/pub/e17/%{name}-%{version}-%{_snap}.tar.gz
-# Source0-md5:	5a999db4998c4cf35ca43fd8e36134b1
+Source0:	ftp://ftp.sparky.homelinux.org/snaps/enli/e17/libs/%{name}-%{_snap}.tar.gz
+# Source0-md5:	fd426d6d36dc57c857f5e91f8950b5d7
 URL:		http://enlightenment.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
