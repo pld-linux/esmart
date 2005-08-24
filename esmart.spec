@@ -1,21 +1,18 @@
 Summary:	Evas "smart objects"
 Summary(pl):	"Inteligentne obiekty" Evas
 Name:		esmart
-Version:	0.9.0
-%define _snap	20050701
-Release:	0.%{_snap}.0.1
+Version:	0.9.0.004
+Release:	1
 License:	BSD
 Group:		X11/Libraries
-#Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-Source0:	http://sparky.homelinux.org/snaps/enli/e17/libs/%{name}-%{_snap}.tar.gz
-# Source0-md5:	fd426d6d36dc57c857f5e91f8950b5d7
+Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
+# Source0-md5:	23605a2ff7e90c8b28e934f6a1fbfc4d
 URL:		http://enlightenment.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	edje-devel
 BuildRequires:	epeg-devel
 BuildRequires:	epsilon-devel
-BuildRequires:	libltdl-devel
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -55,7 +52,7 @@ Static Esmart libraries.
 Statyczne biblioteki Esmart.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
 %{__libtoolize}
