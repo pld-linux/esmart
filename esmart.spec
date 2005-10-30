@@ -2,11 +2,13 @@ Summary:	Evas "smart objects"
 Summary(pl):	"Inteligentne obiekty" Evas
 Name:		esmart
 Version:	0.9.0.004
-Release:	1
+%define	_snap	20051025
+Release:	1.%{_snap}.1
 License:	BSD
 Group:		X11/Libraries
-Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
-# Source0-md5:	23605a2ff7e90c8b28e934f6a1fbfc4d
+#Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
+Source0:	http://sparky.homelinux.org/snaps/enli/e17/libs/%{name}-%{_snap}.tar.bz2
+# Source0-md5:	a9839d5d33c162bb81ad3480d1351f4a
 URL:		http://enlightenment.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -14,6 +16,7 @@ BuildRequires:	edje-devel
 BuildRequires:	epeg-devel
 BuildRequires:	epsilon-devel
 BuildRequires:	libtool
+Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,11 +27,22 @@ a thumbnail generator and a horizontal/vertical container.
 Esmart zawiera "inteligentne" wstêpnie zbudowane obiekty evas.
 Aktualnie zawiera generator miniaturek i kontener poziomy/pionowy.
 
+%package libs
+Summary:	Esmart libraries
+Summary(pl):	Biblioteka Esmart
+Group:		X11/Libraries
+
+%description libs
+Esmart libraries.
+
+%description libs -l pl
+Biblioteka Esmart.
+
 %package devel
 Summary:	Evas "smart objects" header files
 Summary(pl):	Pliki nag³ówkowe "inteligentnych obiektów" Evas
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	edje-devel
 Requires:	epeg-devel
 Requires:	epsilon-devel
@@ -52,11 +66,11 @@ Static Esmart libraries.
 Statyczne biblioteki Esmart.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -72,19 +86,22 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post libs	-p /sbin/ldconfig
+%postun libs	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING* README
 %attr(755,root,root) %{_bindir}/esmart_file_dialog_test
 %attr(755,root,root) %{_bindir}/esmart_test
+%{_datadir}/%{name}
+
+%files libs
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libesmart_*.so.*.*.*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/layout
 %attr(755,root,root) %{_libdir}/%{name}/layout/*.so
-%{_datadir}/%{name}
 
 %files devel
 %defattr(644,root,root,755)
