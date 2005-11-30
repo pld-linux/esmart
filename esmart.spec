@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	Evas "smart objects"
 Summary(pl):	"Inteligentne obiekty" Evas
 Name:		esmart
@@ -74,7 +78,8 @@ Statyczne biblioteki Esmart.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -113,7 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/Esmart/Esmart_*
 %{_pkgconfigdir}/esmart.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libesmart_*.a
 %{_libdir}/%{name}/layout/*.a
+%endif
