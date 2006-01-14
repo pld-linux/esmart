@@ -5,23 +5,26 @@
 Summary:	Evas "smart objects"
 Summary(pl):	"Inteligentne obiekty" Evas
 Name:		esmart
-Version:	0.9.0.004
-%define	_snap	20051025
-Release:	1.%{_snap}.1
+Version:	0.9.0.005
+#%define	_snap	20051025
+Release:	1
+#.%{_snap}.1
 License:	BSD
 Group:		X11/Libraries
-#Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
-Source0:	http://sparky.homelinux.org/snaps/enli/e17/libs/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	a9839d5d33c162bb81ad3480d1351f4a
+Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
+# Source0-md5:	62952b15ceb672a29ec4d21908e96e51
+#Source0:	http://sparky.homelinux.org/snaps/enli/e17/libs/%{name}-%{_snap}.tar.bz2
 URL:		http://enlightenment.org/
-BuildRequires:	autoconf
-BuildRequires:	automake
+#BuildRequires:	autoconf
+#BuildRequires:	automake
 BuildRequires:	edje-devel
 BuildRequires:	epeg-devel
 BuildRequires:	epsilon-devel
-BuildRequires:	libtool
+#BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%undefine	__cxx
 
 %description
 Esmart contains "smart" pre-built evas objects. It currently includes
@@ -70,14 +73,15 @@ Static Esmart libraries.
 Statyczne biblioteki Esmart.
 
 %prep
-%setup -q -n %{name}
+%setup -q
+# -n %{name}
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
+#%%{__libtoolize}
+#%%{__aclocal} -I m4
+#%%{__autoconf}
+#%%{__autoheader}
+#%%{__automake}
 %configure \
 	%{!?with_static_libs:--disable-static}
 %{__make}
