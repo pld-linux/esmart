@@ -7,13 +7,15 @@ Summary(pl):	"Inteligentne obiekty" Evas
 Name:		esmart
 Version:	0.9.0.005
 #%define	_snap	20051025
-Release:	1
+Release:	2
 #.%{_snap}.1
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
 # Source0-md5:	62952b15ceb672a29ec4d21908e96e51
 #Source0:	http://sparky.homelinux.org/snaps/enli/e17/libs/%{name}-%{_snap}.tar.bz2
+Patch0:		efl-m4.patch
+Patch1:		%{name}-layout_in_libdir.patch
 URL:		http://enlightenment.org/
 #BuildRequires:	autoconf
 #BuildRequires:	automake
@@ -75,13 +77,15 @@ Statyczne biblioteki Esmart.
 %prep
 %setup -q
 # -n %{name}
+%patch0 -p1
+%patch1 -p1
 
 %build
-#%%{__libtoolize}
-#%%{__aclocal} -I m4
-#%%{__autoconf}
-#%%{__autoheader}
-#%%{__automake}
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	%{!?with_static_libs:--disable-static}
 %{__make}
