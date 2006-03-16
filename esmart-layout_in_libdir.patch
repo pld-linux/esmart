@@ -1,0 +1,17 @@
+--- esmart-0.9.0.005/configure.in~	2006-01-12 06:42:58.000000000 +0100
++++ esmart-0.9.0.005/configure.in	2006-03-16 22:29:07.000000000 +0100
+@@ -27,13 +27,12 @@
+ fi
+ 
+ if test "x${prefix}" = "xNONE"; then
+-  container_plugin_dir=${ac_default_prefix}/lib/${PACKAGE}/layout
+   AC_DEFINE_UNQUOTED(PREFIX, "${ac_default_prefix}", [Installation Prefix])
+ else
+   AC_DEFINE_UNQUOTED(PREFIX, "${prefix}", [Installation Prefix])
+-  container_plugin_dir=${prefix}/lib/${PACKAGE}/layout
+ fi
+ 
++container_plugin_dir=${libdir}/${PACKAGE}/layout
+ AC_DEFINE_UNQUOTED(CONTAINER_PLUGIN_DIR, "${container_plugin_dir}", [Container Plugin Directory])
+ AC_SUBST(CONTAINER_PLUGIN_DIR)
+ 
