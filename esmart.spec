@@ -17,12 +17,12 @@ Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
 Patch0:		efl-m4.patch
 Patch1:		%{name}-layout_in_libdir.patch
 URL:		http://enlightenment.org/
-#BuildRequires:	autoconf
-#BuildRequires:	automake
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	edje-devel
 BuildRequires:	epeg-devel
 BuildRequires:	epsilon-devel
-#BuildRequires:	libtool
+BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
