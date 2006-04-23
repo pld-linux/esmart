@@ -20,7 +20,6 @@ URL:		http://enlightenment.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	edje-devel
-BuildRequires:	epeg-devel
 BuildRequires:	epsilon-devel
 BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}-%{release}
