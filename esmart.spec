@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Evas "smart objects"
-Summary(pl.UTF-8):   "Inteligentne obiekty" Evas
+Summary(pl.UTF-8):	"Inteligentne obiekty" Evas
 Name:		esmart
 Version:	0.9.0.007
 #%define	_snap	20051025
@@ -37,7 +37,7 @@ Aktualnie zawiera generator miniaturek i kontener poziomy/pionowy.
 
 %package libs
 Summary:	Esmart libraries
-Summary(pl.UTF-8):   Biblioteka Esmart
+Summary(pl.UTF-8):	Biblioteka Esmart
 Group:		X11/Libraries
 
 %description libs
@@ -48,7 +48,7 @@ Biblioteka Esmart.
 
 %package devel
 Summary:	Evas "smart objects" header files
-Summary(pl.UTF-8):   Pliki nagłówkowe "inteligentnych obiektów" Evas
+Summary(pl.UTF-8):	Pliki nagłówkowe "inteligentnych obiektów" Evas
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	edje-devel
@@ -63,7 +63,7 @@ Pliki nagłówkowe "inteligentnych obiektów" Evas.
 
 %package static
 Summary:	Static Esmart libraries
-Summary(pl.UTF-8):   Statyczne biblioteki Esmart
+Summary(pl.UTF-8):	Statyczne biblioteki Esmart
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
