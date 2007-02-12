@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Evas "smart objects"
-Summary(pl):	"Inteligentne obiekty" Evas
+Summary(pl.UTF-8):   "Inteligentne obiekty" Evas
 Name:		esmart
 Version:	0.9.0.007
 #%define	_snap	20051025
@@ -31,24 +31,24 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Esmart contains "smart" pre-built evas objects. It currently includes
 a thumbnail generator and a horizontal/vertical container.
 
-%description -l pl
-Esmart zawiera "inteligentne" wst阷nie zbudowane obiekty evas.
+%description -l pl.UTF-8
+Esmart zawiera "inteligentne" wst臋pnie zbudowane obiekty evas.
 Aktualnie zawiera generator miniaturek i kontener poziomy/pionowy.
 
 %package libs
 Summary:	Esmart libraries
-Summary(pl):	Biblioteka Esmart
+Summary(pl.UTF-8):   Biblioteka Esmart
 Group:		X11/Libraries
 
 %description libs
 Esmart libraries.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteka Esmart.
 
 %package devel
 Summary:	Evas "smart objects" header files
-Summary(pl):	Pliki nag丑wkowe "inteligentnych obiekt體" Evas
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe "inteligentnych obiekt贸w" Evas
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	edje-devel
@@ -58,19 +58,19 @@ Requires:	epsilon-devel
 %description devel
 Evas "smart objects" development headers.
 
-%description devel -l pl
-Pliki nag丑wkowe "inteligentnych obiekt體" Evas.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe "inteligentnych obiekt贸w" Evas.
 
 %package static
 Summary:	Static Esmart libraries
-Summary(pl):	Statyczne biblioteki Esmart
+Summary(pl.UTF-8):   Statyczne biblioteki Esmart
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static Esmart libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki Esmart.
 
 %prep
