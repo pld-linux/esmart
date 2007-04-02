@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	"Inteligentne obiekty" Evas
 Name:		esmart
 Version:	0.9.0.007
 #%define	_snap	20051025
-Release:	3
+Release:	4
 #.%{_snap}.1
 License:	BSD
 Group:		X11/Libraries
