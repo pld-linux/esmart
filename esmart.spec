@@ -23,6 +23,7 @@ BuildRequires:	evas-devel >= 0.9.9.038
 BuildRequires:	imlib2-devel >= 1.0.0
 BuildRequires:	libltdl-devel
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
