@@ -58,6 +58,7 @@ Requires:	edje-devel >= 0.5.0.038
 Requires:	epsilon-devel >= 0.3.0.008
 Requires:	evas-devel >= 0.9.9.038
 Requires:	imlib2-devel >= 1.0.0
+Requires:	libltdl-devel
 
 %description devel
 Evas "smart objects" development headers.
