@@ -5,22 +5,23 @@
 Summary:	Evas "smart objects"
 Summary(pl.UTF-8):	"Inteligentne obiekty" Evas
 Name:		esmart
-Version:	0.9.0.007
-#%define	_snap	20051025
-Release:	4
-#.%{_snap}.1
+Version:	0.9.0.008
+Release:	1
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
-# Source0-md5:	a65b4a08818ac9ef9de3dd9d4f20f148
-#Source0:	http://sparky.homelinux.org/snaps/enli/e17/libs/%{name}-%{_snap}.tar.bz2
-Patch0:		efl-m4.patch
-Patch1:		%{name}-layout_in_libdir.patch
+# Source0-md5:	80d0c7ea0ad7252c36626e5cab59ee9b
+Patch0:		%{name}-layout_in_libdir.patch
 URL:		http://enlightenment.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	edje-devel
-BuildRequires:	epsilon-devel
+# ecore-evas ecore-x
+BuildRequires:	ecore-devel >= 0.9.9.038
+BuildRequires:	edje-devel >= 0.5.0.038
+BuildRequires:	epsilon-devel >= 0.3.0.008
+BuildRequires:	evas-devel >= 0.9.9.038
+BuildRequires:	imlib2-devel >= 1.0.0
+BuildRequires:	libltdl-devel
 BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,9 +52,12 @@ Summary:	Evas "smart objects" header files
 Summary(pl.UTF-8):	Pliki nagłówkowe "inteligentnych obiektów" Evas
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	edje-devel
-Requires:	epeg-devel
-Requires:	epsilon-devel
+# ecore-evas ecore-x
+Requires:	ecore-devel >= 0.9.9.038
+Requires:	edje-devel >= 0.5.0.038
+Requires:	epsilon-devel >= 0.3.0.008
+Requires:	evas-devel >= 0.9.9.038
+Requires:	imlib2-devel >= 1.0.0
 
 %description devel
 Evas "smart objects" development headers.
@@ -75,13 +79,11 @@ Statyczne biblioteki Esmart.
 
 %prep
 %setup -q
-# -n %{name}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
-%{__aclocal} -I m4
+%{__aclocal}
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -95,15 +97,17 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/layout/*.{la,a}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post libs	-p /sbin/ldconfig
-%postun libs	-p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING* README
+%doc AUTHORS COPYING README
 %attr(755,root,root) %{_bindir}/esmart_file_dialog_test
 %attr(755,root,root) %{_bindir}/esmart_test
 %{_datadir}/%{name}
@@ -120,7 +124,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/esmart-config
 %attr(755,root,root) %{_libdir}/libesmart_*.so
 %{_libdir}/libesmart_*.la
-%{_libdir}/%{name}/layout/*.la
 %dir %{_includedir}/Esmart
 %{_includedir}/Esmart/Esmart_*
 %{_pkgconfigdir}/esmart.pc
@@ -129,5 +132,4 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libesmart_*.a
-%{_libdir}/%{name}/layout/*.a
 %endif
