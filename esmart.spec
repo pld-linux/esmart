@@ -6,7 +6,7 @@ Summary:	Evas "smart objects"
 Summary(pl.UTF-8):	"Inteligentne obiekty" Evas
 Name:		esmart
 Version:	0.9.0.008
-Release:	2
+Release:	3
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
