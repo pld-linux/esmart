@@ -2,6 +2,11 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
+%define		ecore_ver	0.9.9.038
+%define		edje_ver	0.5.0.038
+%define		epsilon_ver	0.3.0.008
+%define		evas_ver	0.9.9.038
+
 Summary:	Evas "smart objects"
 Summary(pl.UTF-8):	"Inteligentne obiekty" Evas
 Name:		esmart
@@ -16,10 +21,10 @@ URL:		http://enlightenment.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 # ecore-evas ecore-x
-BuildRequires:	ecore-devel >= 0.9.9.038
-BuildRequires:	edje-devel >= 0.5.0.038
-BuildRequires:	epsilon-devel >= 0.3.0.008
-BuildRequires:	evas-devel >= 0.9.9.038
+BuildRequires:	ecore-devel >= %{ecore_ver}
+BuildRequires:	edje-devel >= %{edje_ver}
+BuildRequires:	epsilon-devel >= %{epsilon_ver}
+BuildRequires:	evas-devel >= %{evas_ver}
 BuildRequires:	imlib2-devel >= 1.0.0
 BuildRequires:	libltdl-devel
 BuildRequires:	libtool
@@ -54,10 +59,10 @@ Summary(pl.UTF-8):	Pliki nagłówkowe "inteligentnych obiektów" Evas
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 # ecore-evas ecore-x
-Requires:	ecore-devel >= 0.9.9.038
-Requires:	edje-devel >= 0.5.0.038
-Requires:	epsilon-devel >= 0.3.0.008
-Requires:	evas-devel >= 0.9.9.038
+Requires:	ecore-devel >= %{ecore_ver}
+Requires:	edje-devel >= %{edje_ver}
+Requires:	epsilon-devel >= %{epsilon_ver}
+Requires:	evas-devel >= %{evas_ver}
 Requires:	imlib2-devel >= 1.0.0
 Requires:	libltdl-devel
 
