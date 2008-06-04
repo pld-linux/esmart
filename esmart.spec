@@ -18,8 +18,8 @@ Source0:	http://download.enlightenment.org/snapshots/2008-01-25/%{name}-%{versio
 # Source0-md5:	62c1d73d2610da148b260efc36b1d03a
 Patch0:		%{name}-layout_in_libdir.patch
 URL:		http://enlightenment.org/
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.52
+BuildRequires:	automake >= 1.6
 # ecore-evas ecore-x
 BuildRequires:	ecore-devel >= %{ecore_ver}
 BuildRequires:	edje-devel >= %{edje_ver}
@@ -106,6 +106,9 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/layout/*.{la,a}
 
+# libs not build
+rm $RPM_BUILD_ROOT%{_pkgconfigdir}/esmart_{file_dialog,textarea}.pc
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -121,22 +124,52 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libesmart_*.so.*
+%attr(755,root,root) %{_libdir}/libesmart_container.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libesmart_container.so.0
+%attr(755,root,root) %{_libdir}/libesmart_draggies.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libesmart_draggies.so.0
+%attr(755,root,root) %{_libdir}/libesmart_resize.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libesmart_resize.so.0
+%attr(755,root,root) %{_libdir}/libesmart_text_entry.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libesmart_text_entry.so.0
+%attr(755,root,root) %{_libdir}/libesmart_thumb.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libesmart_thumb.so.0
+%attr(755,root,root) %{_libdir}/libesmart_trans_x11.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libesmart_trans_x11.so.0
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/layout
 %attr(755,root,root) %{_libdir}/%{name}/layout/*.so
 
 %files devel
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/esmart-config
-%attr(755,root,root) %{_libdir}/libesmart_*.so
-%{_libdir}/libesmart_*.la
+%attr(755,root,root) %{_libdir}/libesmart_container.so
+%attr(755,root,root) %{_libdir}/libesmart_draggies.so
+%attr(755,root,root) %{_libdir}/libesmart_resize.so
+%attr(755,root,root) %{_libdir}/libesmart_text_entry.so
+%attr(755,root,root) %{_libdir}/libesmart_thumb.so
+%attr(755,root,root) %{_libdir}/libesmart_trans_x11.so
+%{_libdir}/libesmart_container.la
+%{_libdir}/libesmart_draggies.la
+%{_libdir}/libesmart_resize.la
+%{_libdir}/libesmart_text_entry.la
+%{_libdir}/libesmart_thumb.la
+%{_libdir}/libesmart_trans_x11.la
 %dir %{_includedir}/Esmart
 %{_includedir}/Esmart/Esmart_*.h
-%{_pkgconfigdir}/esmart_*.pc
+%{_pkgconfigdir}/esmart_container.pc
+%{_pkgconfigdir}/esmart_draggies.pc
+%{_pkgconfigdir}/esmart_resize.pc
+%{_pkgconfigdir}/esmart_text_entry.pc
+%{_pkgconfigdir}/esmart_thumb.pc
+%{_pkgconfigdir}/esmart_trans_x11.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libesmart_*.a
+%{_libdir}/libesmart_container.a
+%{_libdir}/libesmart_draggies.a
+%{_libdir}/libesmart_resize.a
+%{_libdir}/libesmart_text_entry.a
+%{_libdir}/libesmart_thumb.a
+%{_libdir}/libesmart_trans_x11.a
 %endif
