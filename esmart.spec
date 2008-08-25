@@ -2,21 +2,21 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		ecore_ver	0.9.9.043
-%define		edje_ver	0.9.9.043
-%define		epsilon_ver	0.3.0.012
-%define		evas_ver	0.9.9.043
+%define		ecore_ver	0.9.9.044
+%define		edje_ver	0.9.9.044
+%define		epsilon_ver	0.3.0.013
+%define		evas_ver	0.9.9.044
+%define		_snap	20080813
 
 Summary:	Evas "smart objects"
 Summary(pl.UTF-8):	"Inteligentne obiekty" Evas
 Name:		esmart
-Version:	0.9.0.042
-Release:	1
+Version:	0.9.0.043
+Release:	0.%{_snap}.1
 License:	BSD
 Group:		X11/Libraries
-Source0:	http://download.enlightenment.org/snapshots/2008-01-25/%{name}-%{version}.tar.bz2
-# Source0-md5:	62c1d73d2610da148b260efc36b1d03a
-Patch0:		%{name}-layout_in_libdir.patch
+Source0:	%{name}-%{version}-%{_snap}.tar.bz2
+# Source0-md5:	2e22c2f22485e333dedc275f3e40d5b8
 URL:		http://enlightenment.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -85,8 +85,7 @@ Static Esmart libraries.
 Statyczne biblioteki Esmart.
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -q -n %{name}-%{version}-%{_snap}
 
 %build
 %{__libtoolize}
